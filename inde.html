@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Advadev - Premium Web Development Solutions</title>
+    <meta
+      name="description"
+      content="Advadev creates high-performance websites that drive conversions. Professional design, development, and ongoing support for your business growth."
+    />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../logo.svg" type="image/x-icon" />
+
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                DEFAULT: "#832cdb",
+                dark: "#6c22b3",
+                light: "rgba(131, 44, 219, 0.1)",
+              },
+              secondary: {
+                DEFAULT: "#f59e0b",
+                dark: "#d97706",
+              },
+            },
+            fontFamily: {
+              heading: ["Poppins", "sans-serif"],
+              body: ["Roboto", "sans-serif"],
+            },
+            animation: {
+              float: "float 6s ease-in-out infinite",
+              "float-reverse": "float-reverse 6s ease-in-out infinite",
+              "fade-in": "fadeIn 0.8s ease-out",
+              "slide-up": "slideUp 0.8s ease-out",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-15px)" },
+              },
+              "float-reverse": {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(15px)" },
+              },
+              fadeIn: {
+                "0%": { opacity: "0" },
+                "100%": { opacity: "1" },
+              },
+              slideUp: {
+                "0%": { transform: "translateY(30px)", opacity: "0" },
+                "100%": { transform: "translateY(0)", opacity: "1" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      /* Custom Styles */
+      .gradient-text {
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .dark .glass-effect {
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .gradient-bg {
+        background: linear-gradient(135deg, #832cdb 0%, #f59e0b 100%);
+      }
+
+      .no-scroll {
+        overflow: hidden;
+      }
+
+      ::selection {
+        background: #832cdb;
+        color: white;
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #832cdb;
+        border-radius: 5px;
+      }
+
+      .dark ::-webkit-scrollbar-track {
+        background: #1f2937;
+      }
+
+      .dark ::-webkit-scrollbar-thumb {
+        background: #6c22b3;
+      }
+
+      /* Animations */
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+
+      .animate-pulse {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+    </style>
+  </head>
+  <body
+    class="font-body bg-gray-50 text-gray-600 dark:bg-gray-900 dark:text-gray-300 transition-colors duration-300"
+  >
+    <!-- Header -->
+    <header
+      id="header"
+      class="fixed w-full py-4 z-50 transition-all duration-300 glass-effect"
+    >
+      <div class="container mx-auto px-4 md:px-6">
+        <nav class="flex items-center justify-between">
+          <!-- Logo -->
+          <a href="#" class="flex items-center text-2xl font-bold">
+            <img class="w-10 h-10 mr-2" src="../logo.svg" alt="Logo" />
+            <span class="text-primary dark:text-primary-300">Advadev</span>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden lg:flex items-center space-x-8">
+            <div class="relative group">
+              <button
+                class="flex items-center space-x-1 font-medium hover:text-primary dark:hover:text-primary-300 transition-colors"
+              >
+                <span>Services</span>
+                <i
+                  class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"
+                ></i>
+              </button>
+              <div
+                class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-56 bg-white dark:bg-gray-800 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50"
+              >
+                <div class="py-1">
+                  <a
+                    href="#services"
+                    class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                    >Starter — Landing Page</a
+                  >
+                  <a
+                    href="#services"
+                    class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                    >Business — Full Website</a
+                  >
+                  <a
+                    href="#services"
+                    class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                    >Enterprise — Custom</a
+                  >
+                </div>
+              </div>
+            </div>
+            <a
+              href="#portfolio"
+              class="font-medium hover:text-primary dark:hover:text-primary-300 transition-colors"
+              >Portfolio</a
+            >
+            <a
+              href="#pricing"
+              class="font-medium hover:text-primary dark:hover:text-primary-300 transition-colors"
+              >Pricing</a
+            >
+            <a
+              href="#contact"
+              class="font-medium hover:text-primary dark:hover:text-primary-300 transition-colors"
+              >Contact</a
+            >
+          </div>
+
+          <!-- Desktop CTA & Theme Toggle -->
+          <div class="hidden lg:flex items-center space-x-4">
+            <a
+              href="#contact"
+              class="px-6 py-2 bg-primary text-white font-medium rounded-full hover:bg-primary-dark transition-colors shadow-lg hover:shadow-xl"
+            >
+              Book a Call
+            </a>
+            <button
+              id="themeSwitcher"
+              class="w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-gray-700 shadow-md hover:shadow-lg transition-all"
+            >
+              <i class="fas fa-sun text-yellow-400 dark:hidden"></i>
+              <i class="fas fa-moon text-indigo-300 hidden dark:block"></i>
+            </button>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="mobileMenuBtn"
+            class="lg:hidden w-10 h-10 flex flex-col justify-center items-center"
+          >
+            <span
+              class="block w-6 h-0.5 bg-gray-800 dark:bg-white mb-1.5 transition-all"
+            ></span>
+            <span
+              class="block w-6 h-0.5 bg-gray-800 dark:bg-white mb-1.5 transition-all"
+            ></span>
+            <span
+              class="block w-6 h-0.5 bg-gray-800 dark:bg-white transition-all"
+            ></span>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobileMenu"
+        class="hidden fixed inset-0 bg-black bg-opacity-70 z-40 lg:hidden"
+      >
+        <div
+          class="absolute top-0 right-0 w-4/5 h-full bg-white dark:bg-gray-800 shadow-xl transform transition-transform duration-300 ease-in-out"
+        >
+          <div class="flex flex-col h-full p-6">
+            <div class="flex justify-between items-center mb-8">
+              <a
+                href="#"
+                class="text-2xl font-bold text-primary dark:text-primary-300"
+                >Advadev</a
+              >
+              <button
+                id="closeMobileMenu"
+                class="w-8 h-8 flex items-center justify-center text-gray-600 dark:text-gray-300"
+              >
+                <i class="fas fa-times text-xl"></i>
+              </button>
+            </div>
+
+            <nav class="flex-1 flex flex-col space-y-6">
+              <div class="border-b border-gray-200 dark:border-gray-700 pb-6">
+                <button
+                  class="flex items-center justify-between w-full font-medium text-gray-800 dark:text-white"
+                >
+                  <span>Services</span>
+                  <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="mt-2 pl-4 space-y-3">
+                  <a
+                    href="#services"
+                    class="block py-1 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary-300"
+                    >Starter — Landing Page</a
+                  >
+                  <a
+                    href="#services"
+                    class="block py-1 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary-300"
+                    >Business — Full Website</a
+                  >
+                  <a
+                    href="#services"
+                    class="block py-1 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary-300"
+                    >Enterprise — Custom</a
+                  >
+                </div>
+              </div>
+              <a
+                href="#portfolio"
+                class="font-medium text-gray-800 dark:text-white hover:text-primary dark:hover:text-primary-300"
+                >Portfolio</a
+              >
+              <a
+                href="#pricing"
+                class="font-medium text-gray-800 dark:text-white hover:text-primary dark:hover:text-primary-300"
+                >Pricing</a
+              >
+              <a
+                href="#contact"
+                class="font-medium text-gray-800 dark:text-white hover:text-primary dark:hover:text-primary-300"
+                >Contact</a
+              >
+            </nav>
+
+            <div
+              class="mt-auto pt-6 border-t border-gray-200 dark:border-gray-700"
+            >
+              <div class="flex justify-between items-center">
+                <button
+                  id="mobileThemeSwitcher"
+                  class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700"
+                >
+                  <i class="fas fa-sun text-yellow-400 dark:hidden"></i>
+                  <i class="fas fa-moon text-indigo-300 hidden dark:block"></i>
+                </button>
+                <a
+                  href="#contact"
+                  class="px-4 py-2 bg-primary text-white font-medium rounded-full hover:bg-primary-dark transition-colors"
+                >
+                  Book a Call
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+      <!-- Animated background elements -->
+      <div class="absolute inset-0 overflow-hidden">
+        <div
+          class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-gray-800 dark:to-gray-900 opacity-30"
+        ></div>
+        <div
+          class="absolute -top-20 -left-20 w-96 h-96 rounded-full bg-primary opacity-10 filter blur-3xl animate-float"
+        ></div>
+        <div
+          class="absolute -bottom-20 -right-20 w-96 h-96 rounded-full bg-secondary opacity-10 filter blur-3xl animate-float-reverse"
+        ></div>
+        <div
+          class="absolute top-1/2 right-1/4 w-64 h-64 rounded-full bg-primary opacity-10 filter blur-3xl animate-pulse"
+        ></div>
+      </div>
+
+      <div class="container mx-auto px-4 md:px-6 relative z-10">
+        <div class="max-w-4xl mx-auto text-center animate-fade-in">
+          <h1
+            class="text-4xl md:text-6xl font-bold leading-tight mb-6 bg-gradient-to-r from-primary to-purple-500 gradient-text"
+          >
+            We Build Websites That Convert Visitors Into Customers
+          </h1>
+          <p
+            class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto"
+          >
+            Fast, professional, mobile-responsive websites — delivered in days
+            with ongoing post-launch support.
+          </p>
+          <p class="text-lg mb-10 text-gray-500 dark:text-gray-400">
+            Led by
+            <strong class="text-primary dark:text-primary-300"
+              >Wael Al-Hamd</strong
+            >
+            — Founder & Lead Developer
+          </p>
+
+          <div
+            class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6"
+          >
+            <a
+              href="#contact"
+              class="px-8 py-3 bg-primary text-white font-semibold rounded-full hover:bg-primary-dark transition-colors shadow-lg hover:shadow-xl animate-bounce"
+            >
+              Book Free 15-min Call
+            </a>
+            <a
+              href="#services"
+              class="px-8 py-3 border-2 border-primary text-primary font-semibold rounded-full hover:bg-primary hover:text-white transition-colors"
+            >
+              View Our Packages
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero mockup -->
+        <div class="mt-16 md:mt-20 max-w-4xl mx-auto relative animate-slide-up">
+          <div
+            class="relative rounded-2xl overflow-hidden shadow-2xl transform transition-transform hover:scale-[1.01]"
+          >
+            <div
+              class="bg-gray-800 dark:bg-gray-700 px-4 py-3 flex items-center space-x-2"
+            >
+              <div class="flex space-x-2">
+                <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                <div class="w-3 h-3 rounded-full bg-green-400"></div>
+              </div>
+              <div class="flex-1 text-center text-xs text-gray-300">
+                www.yourbusiness.com
+              </div>
+            </div>
+            <div
+              class="bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700 h-80 md:h-96 flex items-center justify-center"
+            >
+              <div class="text-center p-6">
+                <h3
+                  class="text-2xl md:text-3xl font-bold text-primary dark:text-primary-300 mb-2"
+                >
+                  Modern Design
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300">
+                  Responsive • Fast • SEO-Ready
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating elements around the mockup -->
+          <div
+            class="absolute -top-10 -left-10 w-24 h-24 rounded-full bg-primary opacity-20 filter blur-xl animate-float hidden lg:block"
+          ></div>
+          <div
+            class="absolute -bottom-10 -right-10 w-24 h-24 rounded-full bg-secondary opacity-20 filter blur-xl animate-float-reverse hidden lg:block"
+          ></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white dark:bg-gray-900">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Our Service Packages
+          </h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300">
+            Choose the perfect package for your business needs. Each one is
+            designed for performance, growth, and results.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Starter Package -->
+          <div
+            class="relative bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
+          >
+            <div class="px-8 pt-8 pb-6">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-purple-100 dark:bg-purple-900 rounded-xl mb-6"
+              >
+                <i
+                  class="fas fa-pen text-2xl text-primary dark:text-primary-300"
+                ></i>
+              </div>
+              <h3 class="text-2xl font-bold mb-4">Starter — Landing Page</h3>
+              <ul class="space-y-3 mb-8">
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                  <span>Single responsive page</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                  <span>Free deployment</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                  <span>2 revisions included</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                  <span>Basic SEO optimization</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                  <span>Contact form</span>
+                </li>
+              </ul>
+              <div class="text-3xl font-bold mb-6">
+                Starting at
+                <span class="text-primary dark:text-primary-300">$150</span>
+              </div>
+              <a
+                href="#contact"
+                class="block w-full py-3 bg-primary text-white text-center font-semibold rounded-lg hover:bg-primary-dark transition-colors"
+              >
+                Get Started
+              </a>
+            </div>
+          </div>
+
+          <!-- Business Package (Popular) -->
+          <div
+            class="relative bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 transform scale-105 z-10 border-2 border-primary"
+          >
+            <div
+              class="absolute top-4 right-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full"
+            >
+              Most Popular
+            </div>
+            <div class="px-8 pt-8 pb-6">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-purple-100 dark:bg-purple-900 rounded-xl mb-6"
+              >
+                <i
+                  class="fas fa-laptop-code text-2xl text-primary dark:text-primary-300"
+                ></i>
+              </div>
+              <h3 class="text-2xl font-bold mb-4">Business — Full Website</h3>
+              <ul class="space-y-3 mb-8">
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                  <span>4-6 professional pages</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                  <span>Advanced contact forms</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                  <span>Comprehensive SEO</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                  <span>Priority Support</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                  <span>Social media integration</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                  <span>Google Analytics setup</span>
+                </li>
+              </ul>
+              <div class="text-3xl font-bold mb-6">
+                Starting at
+                <span class="text-primary dark:text-primary-300">$350</span>
+              </div>
+              <a
+                href="#contact"
+                class="block w-full py-3 bg-primary text-white text-center font-semibold rounded-lg hover:bg-primary-dark transition-colors"
+              >
+                Get Started
+              </a>
+            </div>
+          </div>
+
+          <!-- Enterprise Package -->
+          <div
+            class="relative bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
+          >
+            <div class="px-8 pt-8 pb-6">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-purple-100 dark:bg-purple-900 rounded-xl mb-6"
+              >
+                <i
+                  class="fas fa-cogs text-2xl text-primary dark:text-primary-300"
+                ></i>
+              </div>
+              <h3 class="text-2xl font-bold mb-4">
+                Enterprise — Custom Solution
+              </h3>
+              <ul class="space-y-3 mb-8">
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                  <span>Custom functionality</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                  <span>Advanced integrations</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                  <span>Monthly maintenance</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                  <span>Priority support</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                  <span>Performance optimization</span>
+                </li>
+              </ul>
+              <div class="text-2xl font-bold mb-6">Custom pricing</div>
+              <a
+                href="#contact"
+                class="block w-full py-3 bg-primary text-white text-center font-semibold rounded-lg hover:bg-primary-dark transition-colors"
+              >
+                Free Consultation
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-800">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Why Choose Advadev?
+          </h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300">
+            We don't just build websites; we build digital assets that deliver
+            tangible results for your business.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div
+            class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-purple-100 dark:bg-purple-900 rounded-xl mb-6 text-primary dark:text-primary-300"
+            >
+              <i class="fas fa-bolt text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Lightning Fast</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Optimized websites that load instantly, reducing bounce rates and
+              increasing conversions.
+            </p>
+          </div>
+
+          <div
+            class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-purple-100 dark:bg-purple-900 rounded-xl mb-6 text-primary dark:text-primary-300"
+            >
+              <i class="fas fa-chart-line text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Conversion-Focused</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Strategic design that guides visitors towards taking action and
+              becoming loyal customers.
+            </p>
+          </div>
+
+          <div
+            class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-purple-100 dark:bg-purple-900 rounded-xl mb-6 text-primary dark:text-primary-300"
+            >
+              <i class="fas fa-headset text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Full Support</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Comprehensive support from concept to launch and beyond with
+              ongoing maintenance plans.
+            </p>
+          </div>
+
+          <div
+            class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-purple-100 dark:bg-purple-900 rounded-xl mb-6 text-primary dark:text-primary-300"
+            >
+              <i class="fas fa-hand-holding-usd text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Transparent Pricing</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Clear quotes and fixed prices with no hidden fees or surprise
+              charges. Ever.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-white dark:bg-gray-900">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Recent Work</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300">
+            Real projects delivering real results for our clients.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Project 1 -->
+          <div
+            class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+          >
+            <div class="relative overflow-hidden h-64">
+              <img
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="The Heritage Restaurant Project"
+                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6 opacity-0 hover:opacity-100 transition-opacity"
+              >
+                <h3 class="text-2xl font-bold text-white mb-2">
+                  The Heritage Restaurant
+                </h3>
+                <a
+                  href="#"
+                  class="inline-block px-4 py-2 bg-white text-primary rounded-full font-medium hover:bg-primary hover:text-white transition-colors"
+                >
+                  View Live Site
+                </a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-3">The Heritage Restaurant</h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-3">
+                <strong class="text-gray-800 dark:text-white"
+                  >Challenge:</strong
+                >
+                Create an appetizing website with an interactive menu and
+                booking system.
+              </p>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                <strong class="text-gray-800 dark:text-white">Solution:</strong>
+                A fully responsive design with a dynamic menu showcase and a
+                seamless table booking integration.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-primary dark:text-primary-300 text-sm rounded-full"
+                  >Restaurant</span
+                >
+                <span
+                  class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-primary dark:text-primary-300 text-sm rounded-full"
+                  >Booking System</span
+                >
+                <span
+                  class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-primary dark:text-primary-300 text-sm rounded-full"
+                  >Mobile First</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div
+            class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+          >
+            <div class="relative overflow-hidden h-64">
+              <img
+                src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="Dr. Ahmed Medical Clinic Project"
+                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6 opacity-0 hover:opacity-100 transition-opacity"
+              >
+                <h3 class="text-2xl font-bold text-white mb-2">
+                  Dr. Ahmed Medical Clinic
+                </h3>
+                <a
+                  href="#"
+                  class="inline-block px-4 py-2 bg-white text-primary rounded-full font-medium hover:bg-primary hover:text-white transition-colors"
+                >
+                  View Live Site
+                </a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-3">Dr. Ahmed Medical Clinic</h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-3">
+                <strong class="text-gray-800 dark:text-white"
+                  >Challenge:</strong
+                >
+                Develop a professional, trustworthy medical website with
+                appointment scheduling.
+              </p>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                <strong class="text-gray-800 dark:text-white">Solution:</strong>
+                A clean, accessible interface with an integrated booking system
+                and a clear service showcase.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-primary dark:text-primary-300 text-sm rounded-full"
+                  >Healthcare</span
+                >
+                <span
+                  class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-primary dark:text-primary-300 text-sm rounded-full"
+                  >Appointments</span
+                >
+                <span
+                  class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-primary dark:text-primary-300 text-sm rounded-full"
+                  >HIPAA Compliant</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <a
+            href="#contact"
+            class="inline-block px-8 py-3 bg-primary text-white font-semibold rounded-full hover:bg-primary-dark transition-colors shadow-lg hover:shadow-xl"
+          >
+            Start Your Project
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-20 bg-gray-50 dark:bg-gray-800">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Process</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300">
+            From concept to launch in four simple, collaborative steps.
+          </p>
+        </div>
+
+        <div class="relative">
+          <div
+            class="hidden lg:block absolute left-0 right-0 top-1/2 h-1 bg-gray-200 dark:bg-gray-700"
+          ></div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <!-- Step 1 -->
+            <div
+              class="relative bg-white dark:bg-gray-700 p-8 rounded-xl shadow-md text-center z-10"
+            >
+              <div
+                class="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 flex items-center justify-center bg-primary text-white text-lg font-bold rounded-full mx-auto"
+              >
+                1
+              </div>
+              <h3 class="text-xl font-bold mb-3 mt-4">Discovery</h3>
+              <p class="text-gray-600 dark:text-gray-300">
+                We learn about your business, goals, and target audience to
+                create the perfect strategy.
+              </p>
+            </div>
+
+            <!-- Step 2 -->
+            <div
+              class="relative bg-white dark:bg-gray-700 p-8 rounded-xl shadow-md text-center z-10"
+            >
+              <div
+                class="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 flex items-center justify-center bg-primary text-white text-lg font-bold rounded-full mx-auto"
+              >
+                2
+              </div>
+              <h3 class="text-xl font-bold mb-3 mt-4">Design</h3>
+              <p class="text-gray-600 dark:text-gray-300">
+                Creating a stunning, user-centric design that reflects your
+                brand and engages your customers.
+              </p>
+            </div>
+
+            <!-- Step 3 -->
+            <div
+              class="relative bg-white dark:bg-gray-700 p-8 rounded-xl shadow-md text-center z-10"
+            >
+              <div
+                class="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 flex items-center justify-center bg-primary text-white text-lg font-bold rounded-full mx-auto"
+              >
+                3
+              </div>
+              <h3 class="text-xl font-bold mb-3 mt-4">Development</h3>
+              <p class="text-gray-600 dark:text-gray-300">
+                Building a fast, responsive, and secure website that works
+                perfectly on all devices.
+              </p>
+            </div>
+
+            <!-- Step 4 -->
+            <div
+              class="relative bg-white dark:bg-gray-700 p-8 rounded-xl shadow-md text-center z-10"
+            >
+              <div
+                class="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 flex items-center justify-center bg-primary text-white text-lg font-bold rounded-full mx-auto"
+              >
+                4
+              </div>
+              <h3 class="text-xl font-bold mb-3 mt-4">Launch & Support</h3>
+              <p class="text-gray-600 dark:text-gray-300">
+                Deploying your site with comprehensive training and ongoing
+                technical support for peace of mind.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-white dark:bg-gray-900">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            What Our Clients Say
+          </h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300">
+            Success stories from businesses we've helped grow online.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="bg-gray-50 dark:bg-gray-800 p-8 rounded-xl border-l-4 border-primary"
+          >
+            <div class="text-5xl text-primary opacity-30 mb-4">"</div>
+            <p class="text-gray-600 dark:text-gray-300 italic mb-6">
+              Advadev transformed our online presence. Our new website increased
+              customer inquiries by 150% in just two months!
+            </p>
+            <div class="font-bold">Sarah Johnson</div>
+            <div class="text-primary dark:text-primary-300 text-sm">
+              CEO, TechStart Solutions
+            </div>
+          </div>
+
+          <div
+            class="bg-gray-50 dark:bg-gray-800 p-8 rounded-xl border-l-4 border-primary"
+          >
+            <div class="text-5xl text-primary opacity-30 mb-4">"</div>
+            <p class="text-gray-600 dark:text-gray-300 italic mb-6">
+              Professional, fast, and incredibly supportive. The team delivered
+              exactly what we needed, on time and on budget.
+            </p>
+            <div class="font-bold">Mohammed Al-Rashid</div>
+            <div class="text-primary dark:text-primary-300 text-sm">
+              Owner, Heritage Restaurant
+            </div>
+          </div>
+
+          <div
+            class="bg-gray-50 dark:bg-gray-800 p-8 rounded-xl border-l-4 border-primary"
+          >
+            <div class="text-5xl text-primary opacity-30 mb-4">"</div>
+            <p class="text-gray-600 dark:text-gray-300 italic mb-6">
+              Our medical clinic's new website makes it so easy for patients to
+              book appointments. Highly recommend Advadev!
+            </p>
+            <div class="font-bold">Dr. Emily Chen</div>
+            <div class="text-primary dark:text-primary-300 text-sm">
+              Director, Wellness Medical Center
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="pricing" class="py-20 bg-gray-50 dark:bg-gray-800">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Frequently Asked Questions
+          </h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300">
+            Everything you need to know before we start working together.
+          </p>
+        </div>
+
+        <div class="max-w-3xl mx-auto">
+          <!-- FAQ Item 1 -->
+          <div
+            class="bg-white dark:bg-gray-700 rounded-xl shadow-md mb-4 overflow-hidden"
+          >
+            <button
+              class="faq-question w-full flex justify-between items-center p-6 text-left hover:text-primary dark:hover:text-primary-300 transition-colors"
+            >
+              <span class="font-medium"
+                >How long does it take to build a website?</span
+              >
+              <i class="fas fa-plus transition-transform"></i>
+            </button>
+            <div class="faq-answer px-6 pb-6 hidden">
+              <p class="text-gray-600 dark:text-gray-300">
+                A standard landing page typically takes 3-5 business days, a
+                full business website takes 7-14 days, and custom projects are
+                timeline-dependent based on complexity. We prioritize quality
+                and efficiency.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 2 -->
+          <div
+            class="bg-white dark:bg-gray-700 rounded-xl shadow-md mb-4 overflow-hidden"
+          >
+            <button
+              class="faq-question w-full flex justify-between items-center p-6 text-left hover:text-primary dark:hover:text-primary-300 transition-colors"
+            >
+              <span class="font-medium">What are the payment terms?</span>
+              <i class="fas fa-plus transition-transform"></i>
+            </button>
+            <div class="faq-answer px-6 pb-6 hidden">
+              <p class="text-gray-600 dark:text-gray-300">
+                We follow a standard 50% upfront deposit to begin the project
+                and 50% upon final approval before launch. We accept bank
+                transfers, PayPal, and all major credit cards.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 3 -->
+          <div
+            class="bg-white dark:bg-gray-700 rounded-xl shadow-md mb-4 overflow-hidden"
+          >
+            <button
+              class="faq-question w-full flex justify-between items-center p-6 text-left hover:text-primary dark:hover:text-primary-300 transition-colors"
+            >
+              <span class="font-medium">Are revisions included?</span>
+              <i class="fas fa-plus transition-transform"></i>
+            </button>
+            <div class="faq-answer px-6 pb-6 hidden">
+              <p class="text-gray-600 dark:text-gray-300">
+                Absolutely. Revisions are a key part of our process. The Starter
+                package includes 2 rounds, the Business package includes 3, and
+                Enterprise solutions have unlimited revisions during the
+                development phase.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 4 -->
+          <div
+            class="bg-white dark:bg-gray-700 rounded-xl shadow-md mb-4 overflow-hidden"
+          >
+            <button
+              class="faq-question w-full flex justify-between items-center p-6 text-left hover:text-primary dark:hover:text-primary-300 transition-colors"
+            >
+              <span class="font-medium">Do you provide hosting?</span>
+              <i class="fas fa-plus transition-transform"></i>
+            </button>
+            <div class="faq-answer px-6 pb-6 hidden">
+              <p class="text-gray-600 dark:text-gray-300">
+                While we don't provide hosting directly, we offer expert
+                guidance to help you choose the best, most cost-effective
+                hosting solution for your needs. We then handle the complete
+                deployment process for free.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 5 -->
+          <div
+            class="bg-white dark:bg-gray-700 rounded-xl shadow-md mb-4 overflow-hidden"
+          >
+            <button
+              class="faq-question w-full flex justify-between items-center p-6 text-left hover:text-primary dark:hover:text-primary-300 transition-colors"
+            >
+              <span class="font-medium"
+                >What happens after the website is launched?</span
+              >
+              <i class="fas fa-plus transition-transform"></i>
+            </button>
+            <div class="faq-answer px-6 pb-6 hidden">
+              <p class="text-gray-600 dark:text-gray-300">
+                Every project comes with 30 days of complimentary technical
+                support to ensure a smooth start. We also offer optional monthly
+                maintenance plans for ongoing updates, security, and support.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-primary text-white">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Ready to Start Your Project?
+          </h2>
+          <p class="text-xl opacity-90">
+            Book a free 15-minute consultation or send us your project details
+            and we'll get back to you within 24 hours.
+          </p>
+        </div>
+
+        <div
+          class="max-w-2xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 md:p-10"
+        >
+          <form id="contactForm" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label
+                  for="name"
+                  class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  >Full Name *</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white"
+                />
+              </div>
+              <div>
+                <label
+                  for="phone"
+                  class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  >Phone Number *</label
+                >
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  required
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                for="email"
+                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                >Email Address *</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white"
+              />
+            </div>
+
+            <div>
+              <label
+                for="service"
+                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                >Service Required</label
+              >
+              <select
+                id="service"
+                name="service"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white"
+              >
+                <option value="">Select a service</option>
+                <option value="landing">Landing Page</option>
+                <option value="website">Business Website</option>
+                <option value="custom">Custom Solution</option>
+                <option value="consultation">Free Consultation</option>
+              </select>
+            </div>
+
+            <div>
+              <label
+                for="message"
+                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                >Project Details</label
+              >
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white"
+                placeholder="Tell us about your project, goals, and expected budget..."
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full py-3 px-6 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-colors shadow-lg hover:shadow-xl"
+            >
+              Send Request & Book Call
+            </button>
+
+            <div
+              id="formMessage"
+              class="hidden p-3 rounded-lg text-center"
+            ></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 pt-20 pb-10">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+          <div>
+            <h3
+              class="text-xl font-bold text-white mb-4 relative pb-2 after:absolute after:bottom-0 after:left-0 after:w-10 after:h-0.5 after:bg-primary"
+            >
+              About Advadev
+            </h3>
+            <p class="mb-4">
+              We specialize in creating professional websites that help
+              businesses grow through a strong and effective digital presence.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition-colors text-white"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition-colors text-white"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition-colors text-white"
+              >
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3
+              class="text-xl font-bold text-white mb-4 relative pb-2 after:absolute after:bottom-0 after:left-0 after:w-10 after:h-0.5 after:bg-primary"
+            >
+              Quick Links
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#services" class="hover:text-primary transition-colors"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#portfolio"
+                  class="hover:text-primary transition-colors"
+                  >Portfolio</a
+                >
+              </li>
+              <li>
+                <a href="#pricing" class="hover:text-primary transition-colors"
+                  >Pricing</a
+                >
+              </li>
+              <li>
+                <a href="#contact" class="hover:text-primary transition-colors"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3
+              class="text-xl font-bold text-white mb-4 relative pb-2 after:absolute after:bottom-0 after:left-0 after:w-10 after:h-0.5 after:bg-primary"
+            >
+              Contact
+            </h3>
+            <ul class="space-y-2">
+              <li class="flex items-start">
+                <i class="fas fa-envelope mt-1 mr-3 text-primary"></i>
+                <a
+                  href="mailto:info@advadev.com"
+                  class="hover:text-primary transition-colors"
+                  >info@advadev.com</a
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-phone-alt mt-1 mr-3 text-primary"></i>
+                <a
+                  href="tel:+966XXXXXX"
+                  class="hover:text-primary transition-colors"
+                  >+963-99-6026-755</a
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-map-marker-alt mt-1 mr-3 text-primary"></i>
+                <span>Aleppo, Syrian Arab Republic</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pt-6 border-t border-gray-800 text-center">
+          <p>© <span id="currentYear"></span> Advadev — All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a
+      href="https://wa.me/00963996026755"
+      target="_blank"
+      class="fixed bottom-8 right-8 w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg flex items-center justify-center transition-all z-50"
+    >
+      <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <script>
+      // Theme Toggle
+      const themeSwitcher = document.getElementById("themeSwitcher");
+      const mobileThemeSwitcher = document.getElementById(
+        "mobileThemeSwitcher"
+      );
+      const html = document.documentElement;
+
+      // Check for saved theme preference or use preferred color scheme
+      const savedTheme =
+        localStorage.getItem("theme") ||
+        (window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light");
+      html.classList.add(savedTheme);
+
+      // Desktop theme toggle
+      themeSwitcher.addEventListener("click", () => {
+        html.classList.toggle("dark");
+        const currentTheme = html.classList.contains("dark") ? "dark" : "light";
+        localStorage.setItem("theme", currentTheme);
+      });
+
+      // Mobile theme toggle
+      if (mobileThemeSwitcher) {
+        mobileThemeSwitcher.addEventListener("click", () => {
+          html.classList.toggle("dark");
+          const currentTheme = html.classList.contains("dark")
+            ? "dark"
+            : "light";
+          localStorage.setItem("theme", currentTheme);
+        });
+      }
+
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const closeMobileMenu = document.getElementById("closeMobileMenu");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        document.body.classList.add("no-scroll");
+        mobileMenu.classList.remove("hidden");
+      });
+
+      closeMobileMenu.addEventListener("click", () => {
+        document.body.classList.remove("no-scroll");
+        mobileMenu.classList.add("hidden");
+      });
+
+      // FAQ Accordion
+      const faqQuestions = document.querySelectorAll(".faq-question");
+      faqQuestions.forEach((question) => {
+        question.addEventListener("click", () => {
+          const answer = question.nextElementSibling;
+          const icon = question.querySelector("i");
+
+          // Toggle this question
+          answer.classList.toggle("hidden");
+          icon.classList.toggle("fa-plus");
+          icon.classList.toggle("fa-minus");
+
+          // Close other questions
+          faqQuestions.forEach((otherQuestion) => {
+            if (otherQuestion !== question) {
+              otherQuestion.nextElementSibling.classList.add("hidden");
+              otherQuestion.querySelector("i").classList.remove("fa-minus");
+              otherQuestion.querySelector("i").classList.add("fa-plus");
+            }
+          });
+        });
+      });
+
+      // Form Submission
+      const contactForm = document.getElementById("contactForm");
+      if (contactForm) {
+        contactForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const submitBtn = this.querySelector('button[type="submit"]');
+          const formMessage = document.getElementById("formMessage");
+
+          // Simulate form submission
+          submitBtn.disabled = true;
+          formMessage.classList.remove(
+            "hidden",
+            "bg-red-100",
+            "text-red-700",
+            "bg-green-100",
+            "text-green-700"
+          );
+          formMessage.textContent = "Sending your message...";
+
+          setTimeout(() => {
+            formMessage.classList.add("bg-green-100", "text-green-700");
+            formMessage.textContent =
+              "Thank you! Your message has been sent successfully. We will contact you soon.";
+
+            // Reset form
+            contactForm.reset();
+            submitBtn.disabled = false;
+          }, 1500);
+        });
+      }
+
+      // Set current year in footer
+      document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+
+            // Close mobile menu if open
+            if (!mobileMenu.classList.contains("hidden")) {
+              document.body.classList.remove("no-scroll");
+              mobileMenu.classList.add("hidden");
+            }
+          }
+        });
+      });
+
+      // Add active class to navigation links on scroll
+      const sections = document.querySelectorAll("section[id]");
+      window.addEventListener("scroll", () => {
+        let current = "";
+
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+
+          if (window.scrollY >= sectionTop - 150) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        document.querySelectorAll("nav a").forEach((link) => {
+          link.classList.remove("text-primary", "dark:text-primary-300");
+          if (link.getAttribute("href") === `#${current}`) {
+            link.classList.add("text-primary", "dark:text-primary-300");
+          }
+        });
+      });
+
+      // Header scroll effect
+      const header = document.getElementById("header");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          header.classList.add("shadow-lg");
+        } else {
+          header.classList.remove("shadow-lg");
+        }
+      });
+    </script>
+  </body>
+</html>
