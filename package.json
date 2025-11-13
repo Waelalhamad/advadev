@@ -1,0 +1,30 @@
+{
+  "name": "advadev-monorepo",
+  "version": "1.0.0",
+  "description": "Advadev - Premium Web Development Solutions",
+  "private": true,
+  "scripts": {
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && npm run dev",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "build:client": "cd client && npm run build",
+    "build:server": "cd server && npm run build",
+    "build": "npm run build:server && npm run build:client",
+    "start:client": "cd client && npm start",
+    "start:server": "cd server && npm start",
+    "start": "concurrently \"npm run start:server\" \"npm run start:client\"",
+    "install:client": "cd client && npm install",
+    "install:server": "cd server && npm install",
+    "install:all": "npm run install:server && npm run install:client"
+  },
+  "keywords": [
+    "nextjs",
+    "express",
+    "typescript",
+    "web-development"
+  ],
+  "author": "Wael Al-Hamd",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
