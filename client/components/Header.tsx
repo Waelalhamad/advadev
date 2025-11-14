@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 interface HeaderProps {
   theme: "light" | "dark";
@@ -11,25 +12,40 @@ interface HeaderProps {
 
 export default function Header({ theme, toggleTheme }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [headerBlur, setHeaderBlur] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setHeaderBlur(scrollTop > 10);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
       <header
         id="header"
-        className="fixed w-full py-4 z-50 transition-all duration-300 glass-effect"
+        className={`fixed w-full py-4 z-50 transition-all duration-300 ${
+          headerBlur ? "glass-effect shadow-lg" : "bg-transparent"
+        }`}
       >
         <div className="container mx-auto px-4 md:px-6">
           <nav className="flex items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex items-center text-2xl font-bold">
+            <Link href="/" className="flex items-center text-2xl font-bold group">
               <Image
                 src="/logo.svg"
                 alt="Advadev Logo"
                 width={40}
                 height={40}
-                className="mr-2"
+                className="mr-2 group-hover:scale-110 transition-transform duration-300"
               />
-              <span className="text-primary dark:text-primary-300">Advadev</span>
+              <span className="text-primary dark:text-primary-300 group-hover:text-primary/80 transition-all">
+                Advadev
+              </span>
             </Link>
 
             {/* Desktop Navigation */}
@@ -86,7 +102,7 @@ export default function Header({ theme, toggleTheme }: HeaderProps) {
             <div className="hidden lg:flex items-center space-x-4">
               <Link
                 href="#contact"
-                className="px-6 py-2 bg-primary text-white font-medium rounded-full hover:bg-primary-dark transition-colors shadow-lg hover:shadow-xl"
+                className="px-6 py-2 bg-primary text-white font-medium rounded-full hover:shadow-xl hover:shadow-primary/50 transition-all shadow-lg transform hover:-translate-y-1"
               >
                 Book a Call
               </Link>
